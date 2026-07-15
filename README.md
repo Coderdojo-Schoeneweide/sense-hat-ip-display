@@ -1,4 +1,4 @@
-# project_name
+# sense-hat-ip-display
 
 Template for python projects.
 
