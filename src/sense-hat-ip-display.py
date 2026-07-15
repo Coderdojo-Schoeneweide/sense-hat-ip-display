@@ -4,16 +4,23 @@ import socket
 import fcntl
 import struct
 import time
+import signal
+import sys
 from sense_hat import SenseHat
+
+
+running = True
 
 
 def main():
     sense = SenseHat()
     
-    while True:
+    while running:
         ip = get_wlan0_ip()
         sense.show_message(ip)
         time.sleep(1)
+
+    sense.clear()
 
 
 def get_wlan0_ip():
@@ -30,6 +37,17 @@ def get_wlan0_ip():
         s.close()
 
 
+def shutdown(signum, frame):
+    global running
+    running = False
+
+signal.signal(signal.SIGTERM, shutdown)
+signal.signal(signal.SIGINT, shutdown)
+
+
 if __name__ == '__main__':
     main()
+
+
+
 
