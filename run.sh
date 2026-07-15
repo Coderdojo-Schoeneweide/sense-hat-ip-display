@@ -3,7 +3,7 @@
 case "$1" in
 	r)
 		shift
-		python3 sense-hat-ip-display/cli/main.py "$@"
+		python3 src/sense-hat-ip-display.py "$@"
 		;;
 	t)
 		shift
