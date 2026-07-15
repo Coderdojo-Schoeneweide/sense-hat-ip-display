@@ -59,10 +59,5 @@ echo "Reloading systemd daemon..."
 sudo systemctl daemon-reload
 
 # Enable and start the service
-echo "Enabling and starting sense-hat-ip.service..."
+echo "Enabling sense-hat-ip.service..."
 sudo systemctl enable sense-hat-ip.service
-sudo systemctl start sense-hat-ip.service
-
-# Show status
-echo "----------------------------------------"
-sudo systemctl status sense-hat-ip.service --no-pager -l
