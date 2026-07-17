@@ -7,6 +7,7 @@ import time
 import signal
 import sys
 from sense_hat import SenseHat
+import getpass
 
 
 running = True
@@ -23,6 +24,10 @@ def main():
     sense.clear()
 
 
+def get_username():
+    return getpass.getuser()
+
+
 def get_wlan0_ip():
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     try:
@@ -35,6 +40,10 @@ def get_wlan0_ip():
         return "offline"
     finally:
         s.close()
+
+
+def display_output(sense, ip, username):
+    sense.show_message(f'{username} {ip}')
 
 
 def shutdown(signum, frame):
